@@ -12,12 +12,11 @@ public class Main {
         for (String arg : args) {
             if (arg.equalsIgnoreCase("--version")) {
                 System.out.println();
-                return;
             } else {
                 System.out.println("Unsupported flag: " + arg);
                 System.out.println("Supported flags: \n--version\tdisplays program version ");
-                return;
             }
+            return;
         }
         System.out.println();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
