@@ -13,8 +13,7 @@ public class Main {
             if (arg.equalsIgnoreCase("--version")) {
                 System.out.println();
                 return;
-            }
-            else {
+            } else {
                 System.out.println("Unsupported flag: " + arg);
                 System.out.println("Supported flags: \n--version\tdisplays program version ");
                 return;
@@ -26,8 +25,11 @@ public class Main {
         while (true) {
             System.out.print(" expression: ");
             inputExpression = reader.readLine();
-            if (inputExpression != null && !inputExpression.equalsIgnoreCase("exit")) evaluate(inputExpression);
-            else break;
+            if (inputExpression != null && !inputExpression.equalsIgnoreCase("exit")) {
+                double result = evaluate(inputExpression);
+                if (!Double.isNaN(result))
+                    System.out.println("Result: " + result);
+            } else break;
         }
     }
 
@@ -45,6 +47,10 @@ public class Main {
         for (double d : operands) previousStack.push(d);
     }
 
+    /**
+     * @param expression The expression to evaluate
+     * @return The result of the evaluated expression
+     */
     static double evaluate(String expression) {
         SaveStack();
         try {
